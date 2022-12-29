@@ -1,0 +1,304 @@
+ 
+           TABLE 1 : BOOKS
+ +---------+--------------------+-----------------+--------------------+-------+-----------+------+
+| BOOK_ID | BOOK_NAME          | AUTHOR_NAME     | PUBLISHERS         | PRICE | TYPE      | QTY  |
++---------+--------------------+-----------------+--------------------+-------+-----------+------+
+| C0001   | FAST COOK          | LATA KAPOOR     | EPB                |   355 | COOKERY   |    5 |
+| F0001   | THE TEARS          | WILLIAM HOPKINS | FIRST PUBLICATIONS |   650 | FICTION   |   20 |
+| T0001   | MY FIRST C++       | BRIAN & BROOKE  | EPB                |   350 | TEXT      |   10 |
+| T0002   | C++ BRAINWORKS     | A.W.ROSSAINE    | TDH                |   350 | TEXT      |   15 |
+| F0002   | THUNDERBOLTS       | ANNA ROBERTS    | FIRST PUBLICATIONS |   750 | FICTION   |   50 |
+| T0006   | HARRY POTTER       | J.K.ROWLING     | TDH                |   500 | FICTION   |    5 |
+| F0001   | 2 STATES           | CHETAN BHAGAT   | EPB                |   850 | TEXT      |   10 |
+| T0007   | WINGS OF FIRE      | APJ ABDUL KALAM | TDH                |   600 | BIOGRAPHY |    5 |
+| T0008   | INTERGRAL CALCULUS | AMIT AGARWAL    | ARIHANT            |   600 | EDUCATION |    5 |
+| A0008   | HIGHER ALGEBRA     | HALL AND KNIGHT | ITC                |   600 | EDUCATION |    5 |
++---------+--------------------+-----------------+--------------------+-------+-----------+------+
+DESCRIPTION OF TABLE 1:
++-------------+----------+------+-----+---------+-------+
+| Field       | Type     | Null | Key | Default | Extra |
++-------------+----------+------+-----+---------+-------+
+| BOOK_ID     | char(5)  | YES  |     | NULL    |       |
+| BOOK_NAME   | char(20) | YES  |     | NULL    |       |
+| AUTHOR_NAME | char(25) | YES  |     | NULL    |       |
+| PUBLISHERS  | char(20) | YES  |     | NULL    |       |
+| PRICE       | int(4)   | YES  |     | NULL    |       |
+| TYPE        | char(10) | YES  |     | NULL    |       |
+| QTY         | int(2)   | YES  |     | NULL    |       |
++-------------+----------+------+-----+---------+-------+
+          TABLE 2: ISSUED
++---------+----------------+
+| BOOK_ID | QUANTITY_ISSUED |
++---------+----------------+
+| C0001   |              5 |
+| T0001   |              4 |
+| F0001   |              6 |
+| A0008   |              4 |
+| T0007   |              6 |
++---------+----------------+
+DESCRIPTION OF TABLE 2:
++----------------+----------+------+-----+---------+-------+
+| Field          | Type     | Null | Key | Default | Extra |
++----------------+----------+------+-----+---------+-------+
+| BOOK_ID        | char(10) | YES  |     | NULL    |       |
+| QUANTITY_ISSUED | int(5)   | YES  |     | NULL    |       |
++----------------+----------+------+-----+---------+-------+
+>>WRITE SQL COMMANDS FOR THE FOLLOWING QUESTIONS.
+            
+Q1) TO SHOW BOOK NAME,AUTHOR NAME AND PRICE OF BOOKS OF ALL PUBLISHERS.
+   
+    SELECT BOOK_NAME,AUTHOR_NAME,PRICE FROM BOOKS;
++--------------------+-----------------+-------+
+| BOOK_NAME          | AUTHOR_NAME     | PRICE |
++--------------------+-----------------+-------+
+| FAST COOK          | LATA KAPOOR     |   355 |
+| THE TEARS          | WILLIAM HOPKINS |   650 |
+| MY FIRST C++       | BRIAN & BROOKE  |   350 |
+| C++ BRAINWORKS     | A.W.ROSSAINE    |   350 |
+| THUNDERBOLTS       | ANNA ROBERTS    |   750 |
+| HARRY POTTER       | J.K.ROWLING     |   500 |
+| 2 STATES           | CHETAN BHAGAT   |   850 |
+| WINGS OF FIRE      | APJ ABDUL KALAM |   600 |
+| INTERGRAL CALCULUS | AMIT AGARWAL    |   600 |
+| HIGHER ALGEBRA     | HALL AND KNIGHT |   600 |
++--------------------+-----------------+-------+
+Q2)TO DISPLAY THE NAMES OF BOOK OF TEXT TYPE.
+> SELECT BOOK_NAME
+-> FROM BOOKS
+-> WHERE TYPE='TEXT';
++----------------+
+| BOOK_NAME      |
++----------------+
+| MY FIRST C++   |
+| C++ BRAINWORKS |
+| 2 STATES       |
++----------------+
+Q3)TO DISPLAY THE NAMES AND PRICE FROM BOOKS IN ASCENDING ORDER OF THEIR PRICE.
+> SELECT BOOK_NAME,PRICE
+-> FROM BOOKS
+-> ORDER BY PRICE;
++--------------------+-------+
+| BOOK_NAME          | PRICE |
++--------------------+-------+
+| MY FIRST C++       |   350 |
+| C++ BRAINWORKS     |   350 |
+| FAST COOK          |   355 |
+| HARRY POTTER       |   500 |
+| WINGS OF FIRE      |   600 |
+| INTERGRAL CALCULUS |   600 |
+| HIGHER ALGEBRA     |   600 |
+| THE TEARS          |   650 |
+| THUNDERBOLTS       |   750 |
+| 2 STATES           |   850 |
++--------------------+-------+
+Q4) TO INCREASE THE PRICE OF ALL BOOKS OF EPB PUBLISHERS BY 100.
+> UPDATE BOOKS
+    -> SET PRICE=PRICE+100
+    -> WHERE PUBLISHERS='EPB';
+SELECT * FROM BOOKS;
++---------+--------------------+-----------------+--------------------+-------+-----------+------+
+| BOOK_ID | BOOK_NAME          | AUTHOR_NAME     | PUBLISHERS         | PRICE | TYPE      | QTY  |
++---------+--------------------+-----------------+--------------------+-------+-----------+------+
+| C0001   | FAST COOK          | LATA KAPOOR     | EPB                |   455 | COOKERY   |    5 |
+| F0001   | THE TEARS          | WILLIAM HOPKINS | FIRST PUBLICATIONS |   650 | FICTION   |   20 |
+| T0001   | MY FIRST C++       | BRIAN & BROOKE  | EPB                |   450 | TEXT      |   10 |
+| T0002   | C++ BRAINWORKS     | A.W.ROSSAINE    | TDH                |   350 | TEXT      |   15 |
+| F0002   | THUNDERBOLTS       | ANNA ROBERTS    | FIRST PUBLICATIONS |   750 | FICTION   |   50 |
+| T0006   | HARRY POTTER       | J.K.ROWLING     | TDH                |   500 | FICTION   |    5 |
+| F0001   | 2 STATES           | CHETAN BHAGAT   | EPB                |   950 | TEXT      |   10 |
+| T0007   | WINGS OF FIRE      | APJ ABDUL KALAM | TDH                |   600 | BIOGRAPHY |    5 |
+| T0008   | INTERGRAL CALCULUS | AMIT AGARWAL    | ARIHANT            |   600 | EDUCATION |    5 |
+| A0008   | HIGHER ALGEBRA     | HALL AND KNIGHT | ITC                |   600 | EDUCATION |    5 |
++---------+--------------------+-----------------+--------------------+-------+-----------+------+
+Q5)TO DISPLAY THE BOOK ID,BOOK NAME AND QUANTITY ISSUED FOR ALL BOOKS WHICH HAVE BEEN ISSUED.
+> SELECT BOOKS.BOOK_ID,BOOK_NAME,QUANTITY_ISSUED
+    -> FROM BOOKS,ISSUE
+    -> WHERE BOOKS.BOOK_ID=ISSUE.BOOK_ID;
++---------+----------------+----------------+
+| BOOK_ID | BOOK_NAME      | QUANTITY_ISSUED |
++---------+----------------+----------------+
+| C0001   | FAST COOK      |              5 |
+| F0001   | THE TEARS      |              6 |
+| T0001   | MY FIRST C++   |              4 |
+| F0001   | 2 STATES       |              6 |
+| T0007   | WINGS OF FIRE  |              6 |
+| A0008   | HIGHER ALGEBRA |              4 |
++---------+----------------+----------------+
+Q6)TO INSERT A NEW ROW IN TABLE ISSUE HAVING THE FOLLOWING DATA:"F003",1.
+       INSERT INTO ISSUE
+       VALUES("F0003",1);
+       SELECT * FROM ISSUE;
++---------+----------------+
+| BOOK_ID | QUANTITY_ISSUED |
++---------+----------------+
+| C0001   |              5 |
+| T0001   |              4 |
+| F0001   |              6 |
+| A0008   |              4 |
+| T0007   |              6 |
+| F0003   |              1 |
++---------+----------------+ 
+Q7)TO DISPLAY NUMBER OF ALL BOOKS FROM TABLE BOOKS.
+
+ SELECT COUNT(*) NUMBER FROM BOOKS;
++--------+
+| NUMBER |
++--------+
+|     10 |
++--------+
+Q8)TO DISPLAY MAXIMUM PRICE OF BOOK  
+   SELECT MAX(PRICE) FROM BOOKS;
++------------+
+| MAX(PRICE) |
++------------+
+|        950 |
++------------+
+Q9) TO DISPLAY MINIMUM PRICE OF BOOKS
+    SELECT MIN(PRICE) FROM BOOKS;
++------------+
+| MIN(PRICE) |
++------------+
+|        350 |
++------------+
+Q10) TO DISPALY ALL TYPES OF BOOKS FROM BOOKS
+  
+     SELECT * FROM BOOKS
+     GROUP BY TYPE;
++---------+--------------------+-----------------+--------------------+-------+-----------+------+
+| BOOK_ID | BOOK_NAME          | AUTHOR_NAME     | PUBLISHERS         | PRICE | TYPE      | QTY  |
++---------+--------------------+-----------------+--------------------+-------+-----------+------+
+| T0007   | WINGS OF FIRE      | APJ ABDUL KALAM | TDH                |   600 | BIOGRAPHY |    5 |
+| C0001   | FAST COOK          | LATA KAPOOR     | EPB                |   455 | COOKERY   |    5 |
+| T0008   | INTERGRAL CALCULUS | AMIT AGARWAL    | ARIHANT            |   600 | EDUCATION |    5 |
+| F0001   | THE TEARS          | WILLIAM HOPKINS | FIRST PUBLICATIONS |   650 | FICTION   |   20 |
+| T0001   | MY FIRST C++       | BRIAN & BROOKE  | EPB                |   450 | TEXT      |   10 |
++---------+--------------------+-----------------+--------------------+-------+-----------+------+ 
+
+Q11) TO DISPLAY DISTINCT PUBLISHERS
+ SELECT DISTINCT PUBLISHERS FROM BOOKS;
++--------------------+
+| PUBLISHERS         |
++--------------------+
+| EPB                |
+| FIRST PUBLICATIONS |
+| TDH                |
+| ARIHANT            |
+| ITC                |
++--------------------+  
+  
+  
+Q12) TO FIND SUM OF PRICE FROM BOOKS
+   SELECT SUM(PRICE) FROM BOOKS;
++------------+
+| SUM(PRICE) |
++------------+
+|       5905 |
++------------+
+
+Q13) TO FIND AVERAGE OF PRICE FROM BOOKS
+   SELECT AVG(PRICE) FROM BOOKS;
++------------+
+| AVG(PRICE) |
++------------+
+|   590.5000 |
++------------+
+
+Q14) TO INCREASE PRICE OF EACH BOOK BY 4 TIMES 
+    SELECT BOOK_NAME,AUTHOR_NAME,PUBLISHERS,PRICE*4 FROM BOOKS;
++--------------------+-----------------+--------------------+---------+
+| BOOK_NAME          | AUTHOR_NAME     | PUBLISHERS         | PRICE*4 |
++--------------------+-----------------+--------------------+---------+
+| FAST COOK          | LATA KAPOOR     | EPB                |    1820 |
+| THE TEARS          | WILLIAM HOPKINS | FIRST PUBLICATIONS |    2600 |
+| MY FIRST C++       | BRIAN & BROOKE  | EPB                |    1800 |
+| C++ BRAINWORKS     | A.W.ROSSAINE    | TDH                |    1400 |
+| THUNDERBOLTS       | ANNA ROBERTS    | FIRST PUBLICATIONS |    3000 |
+| HARRY POTTER       | J.K.ROWLING     | TDH                |    2000 |
+| 2 STATES           | CHETAN BHAGAT   | EPB                |    3800 |
+| WINGS OF FIRE      | APJ ABDUL KALAM | TDH                |    2400 |
+| INTERGRAL CALCULUS | AMIT AGARWAL    | ARIHANT            |    2400 |
+| HIGHER ALGEBRA     | HALL AND KNIGHT | ITC                |    2400 |
++--------------------+-----------------+--------------------+---------+
+
+Q15) TO DISPALY BOOK NAME ,AUTHOR NAME AND BOOK ISSUE COMMON TO BOOKS AND ISSUE
+   SELECT BOOK_NAME,AUTHOR_NAME,BOOKS.BOOK_ID
+    -> FROM BOOKS,ISSUE
+    -> WHERE BOOKS.BOOK_ID=ISSUE.BOOK_ID;
++----------------+-----------------+---------+
+| BOOK_NAME      | AUTHOR_NAME     | BOOK_ID |
++----------------+-----------------+---------+
+| FAST COOK      | LATA KAPOOR     | C0001   |
+| THE TEARS      | WILLIAM HOPKINS | F0001   |
+| MY FIRST C++   | BRIAN & BROOKE  | T0001   |
+| 2 STATES       | CHETAN BHAGAT   | F0001   |
+| WINGS OF FIRE  | APJ ABDUL KALAM | T0007   |
+| HIGHER ALGEBRA | HALL AND KNIGHT | A0008   |
++----------------+-----------------+---------+
+
+Q16) TO DISPALY BOOK NAME ,AUTHOR NAME AND BOOK ISSUE COMMON TO BOOKS AND ISSUE WHERE PRICE IS GREATER THAN 500
+  SELECT BOOK_NAME,AUTHOR_NAME,BOOKS.BOOK_ID
+    -> FROM BOOKS,ISSUE
+    -> WHERE BOOKS.BOOK_ID=ISSUE.BOOK_ID AND PRICE>500;
++----------------+-----------------+---------+
+| BOOK_NAME      | AUTHOR_NAME     | BOOK_ID |
++----------------+-----------------+---------+
+| THE TEARS      | WILLIAM HOPKINS | F0001   |
+| 2 STATES       | CHETAN BHAGAT   | F0001   |
+| WINGS OF FIRE  | APJ ABDUL KALAM | T0007   |
+| HIGHER ALGEBRA | HALL AND KNIGHT | A0008   |
++----------------+-----------------+---------+
+
+
+Q17) TO DISPLAY BOOK NAME AND BOOK AUTHOR WHERE QUANTITY IS NOT EQUAL TO 5 AND 20
+    SELECT BOOK_NAME,AUTHOR_NAME
+    -> FROM BOOKS
+    -> WHERE QTY NOT IN('5','20');
++----------------+----------------+
+| BOOK_NAME      | AUTHOR_NAME    |
++----------------+----------------+
+| MY FIRST C++   | BRIAN & BROOKE |
+| C++ BRAINWORKS | A.W.ROSSAINE   |
+| THUNDERBOLTS   | ANNA ROBERTS   |
+| 2 STATES       | CHETAN BHAGAT  |
++----------------+----------------+
+ 
+Q18) TO INCREASE THE QUANTITY OF BOOKS BY 2
+  SELECT BOOK_NAME,AUTHOR_NAME,QTY*4 FROM BOOKS;
++--------------------+-----------------+-------+
+| BOOK_NAME          | AUTHOR_NAME     | QTY*4 |
++--------------------+-----------------+-------+
+| FAST COOK          | LATA KAPOOR     |    20 |
+| THE TEARS          | WILLIAM HOPKINS |    80 |
+| MY FIRST C++       | BRIAN & BROOKE  |    40 |
+| C++ BRAINWORKS     | A.W.ROSSAINE    |    60 |
+| THUNDERBOLTS       | ANNA ROBERTS    |   200 |
+| HARRY POTTER       | J.K.ROWLING     |    20 |
+| 2 STATES           | CHETAN BHAGAT   |    40 |
+| WINGS OF FIRE      | APJ ABDUL KALAM |    20 |
+| INTERGRAL CALCULUS | AMIT AGARWAL    |    20 |
+| HIGHER ALGEBRA     | HALL AND KNIGHT |    20 |
++--------------------+-----------------+-------+
+
+Q19) TO DISPALY BOOK NAME AND BOOK AUTHOR WITH MAXIMUM QUANTITY
+  SELECT BOOK_NAME,AUTHOR_NAME,MAX(QTY) FROM BOOKS;
++-----------+-------------+----------+
+| BOOK_NAME | AUTHOR_NAME | MAX(QTY) |
++-----------+-------------+----------+
+| FAST COOK | LATA KAPOOR |       50 |
++-----------+-------------+----------+
+Q20) TO DISPLAY BOOK NAME WHICH CONTAINS LETTER 'T' IN THEM.
+ SELECT BOOK_NAME
+    -> FROM BOOKS
+    -> WHERE BOOK_NAME LIKE '%T%';
++--------------------+
+| BOOK_NAME          |
++--------------------+
+| FAST COOK          |
+| THE TEARS          |
+| MY FIRST C++       |
+| THUNDERBOLTS       |
+| HARRY POTTER       |
+| 2 STATES           |
+| INTERGRAL CALCULUS |
++--------------------+
+  
